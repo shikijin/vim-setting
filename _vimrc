@@ -10,12 +10,17 @@ set list
 set encoding=utf-8
 set noundofile
 set nobackup
+set columns=110
+set lines=100
 
 
 imap <C-k> <Up>
 imap <C-j> <Down>
 imap <C-h> <Left>
 imap <C-l> <Right>
+
+nnoremap <C-Tab> gt
+nnoremap <C-S-Tab> gT
 
 
 if &compatible
@@ -36,7 +41,11 @@ NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'Shougo/neocomplete.vim'
 NeoBundle 'Shougo/neosnippet'
 NeoBundle 'Shougo/neosnippet-snippets'
-
+NeoBundle 'cohama/lexima.vim'
+NeoBundle 'simeji/winresizer'
+NeoBundle 'thinca/vim-quickrun'
+NeoBundle 'scrooloose/nerdtree'
+NeoBundle 'mattn/emmet-vim'
 call neobundle#end()
 
 filetype plugin indent on
@@ -69,7 +78,7 @@ let g:neocomplete#keyword_patterns['default'] = '\h\w*'
 
 " Plugin key-mappings.
 inoremap <expr><C-g>     neocomplete#undo_completion()
-inoremap <expr><C-l>     neocomplete#complete_common_string()
+"inoremap <expr><C-l>     neocomplete#complete_common_string()
 
 " Recommended key-mappings.
 " <CR>: close popup and save indent.
@@ -114,8 +123,9 @@ endif
 " For perlomni.vim setting.
 " https://github.com/c9s/perlomni.vim
 let g:neocomplete#sources#omni#input_patterns.perl = '\h\w*->\h\w*\|\h\w*::'
-
-
+let g:quickrun_config={'*': {'split': ''}}
+let g:user_emmet_leader_key='<C-t>'
+map <C-n> :NERDTreeToggle<CR>
 
 "if dein#load_state("~/vimfiles/bundles")
 "  call dein#begin("~/vimfiles/bundles")
